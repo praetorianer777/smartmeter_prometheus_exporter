@@ -5,11 +5,11 @@ services:
       dockerfile: Dockerfile
     environment:
       - DEVICE=house
-      - DEVICE_PATH=/dev/ttyUSB0
+      - DEVICE_PATH=/dev/ttyUSB1
     ports:
       - "9099:9099"
     devices:
-      - "/dev/ttyUSB0:/dev/ttyUSB0"
+      - "/dev/ttyUSB0:/dev/ttyUSB1"
     restart: always
   heatpump:
     build:
@@ -17,9 +17,9 @@ services:
       dockerfile: Dockerfile
     environment:
       - DEVICE=heatpump
-      - DEVICE_PATH=/dev/ttyUSB1
+      - DEVICE_PATH=/dev/ttyUSB0
     ports:
       - "9098:9099"
     devices:
-      - "/dev/ttyUSB1:/dev/ttyUSB1"
+      - "/dev/ttyUSB1:/dev/ttyUSB0"
     restart: always
