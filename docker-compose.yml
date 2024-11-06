@@ -4,8 +4,8 @@ services:
       context: .
       dockerfile: Dockerfile
     environment:
-      - DEVICE="house"
-      - DEVICE_PATH="/dev/ttyUSB0"
+      - DEVICE=house
+      - DEVICE_PATH=/dev/ttyUSB0
     ports:
       - "9099:9099"
     devices:
@@ -16,8 +16,8 @@ services:
       context: .
       dockerfile: Dockerfile
     environment:
-      - DEVICE="heatpump"
-      - DEVICE_PATH="/dev/ttyUSB1"
+      - DEVICE=heatpump
+      - DEVICE_PATH=/dev/ttyUSB1
     ports:
       - "9098:9099"
     devices:
