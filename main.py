@@ -2,6 +2,7 @@ from smllib import SmlStreamReader
 import serial
 import os
 from prometheus_client import start_http_server, Summary, Gauge, Info, Counter
+import time
 
 port = int(os.environ.get('PROMETHEUS_PORT', 9099))
 device_path = os.environ.get('DEVICE_PATH', '/dev/ttyUSB0')
@@ -47,7 +48,7 @@ if __name__ == '__main__':
                         TOTAL_ENERGY_FEED.labels(name=device, metric="total_energy", unit="Wh").set(obis_values[3].value)
                     if obis.obis == "0100100700ff":
                         CURRENT_ENERGY.labels(name=device, metric="current_energy", unit="W").set(obis_values[4].value)
-
+                time.sleep(3)
     except KeyboardInterrupt:
         print("Stopping...")
     finally:
