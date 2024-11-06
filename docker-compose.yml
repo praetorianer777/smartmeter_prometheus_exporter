@@ -1,0 +1,25 @@
+services:
+  house:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - DEVICE="heatpump"
+      - DEVICE_PATH="/dev/ttyUSB0"
+    ports:
+      - "9099:9099"
+    devices:
+      - "/dev/ttyUSB0:/dev/ttyUSB0"
+    restart: always
+  heatpump:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - DEVICE="heatpump"
+      - DEVICE_PATH="/dev/ttyUSB1"
+    ports:
+      - "9098:9099"
+    devices:
+      - "/dev/ttyUSB1:/dev/ttyUSB1"
+    restart: always
