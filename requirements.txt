@@ -3,5 +3,4 @@ iso8601==2.1.0
 prometheus_client==0.21.0
 pyserial==3.5
 PyYAML==6.0.2
-serial==0.0.97
 smllib==1.5
