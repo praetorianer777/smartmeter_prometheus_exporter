@@ -1,10 +1,17 @@
 FROM python:3.9.20-alpine3.19
-USER pythonuser
+
+RUN adduser -D -h /home/pythonuser -s /bin/bash pythonuser
+RUN addgroup pythonuser dialout
 
 # installation
 COPY requirements.txt /app/requirements.txt
 COPY main.py /app/main.py
+WORKDIR /app
 RUN pip install -r requirements.txt
+
+RUN chown -R pythonuser:pythonuser /app
+
+USER pythonuser
 
 # environment variables
 ENV PROMETHEUS_PORT=9099
